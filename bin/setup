@@ -1,7 +1,22 @@
-# Add script to:
-# * Install dependencies
-# * Build/Compile
-# * Run Test Suit to validate
+#!/usr/bin/env bash
+
+#install depedency
+sudo apt-get install java
+
 #
-# After this is run, bin/parking_lot
-# should Just Work.
+##Create .class from .java
+#
+cd ..
+make
+
+#
+##Create manifest.txt
+#
+cd bin
+echo "Main-Class: Main" < manifest.txt
+
+#Create jar file
+jar -cvmf manifest.txt ParkingLot.jar *.class
+
+#Run test case
+
