@@ -28,12 +28,17 @@ public class ParkingLot {
 
     //Method to place car to Parking Lot
     public void parkCar(Car c) {
-        if (c.getSlotNumber() != -1) {
-            parkingSlot.set(c.getSlotNumber(), c);
-            System.out.println("Allocated slot number: " + c.getSlotNumber());
+        if (c.getSlotNumber() > 0 && c.getSlotNumber() <= size) {
+            if (c.getSlotNumber() != -1) {
+                parkingSlot.set(c.getSlotNumber(), c);
+                System.out.println("Allocated slot number: " + c.getSlotNumber());
+            }
+            else {
+                System.out.println("Sorry, parking lot is full");
+            }
         }
         else {
-            System.out.println("Sorry, parking lot is full");
+            System.out.println("Undefined slot number");
         }
     }
 

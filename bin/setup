@@ -1,22 +1,20 @@
 #!/usr/bin/env bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 
 #install depedency
-sudo apt-get install java
+sudo apt install openjdk-8-jre-headless
 
 #
 ##Create .class from .java
 #
-cd ..
-make
-
-#
-##Create manifest.txt
-#
-cd bin
-echo "Main-Class: Main" < manifest.txt
+make -C
 
 #Create jar file
-jar -cvmf manifest.txt ParkingLot.jar *.class
+jar -cvmf bin/manifest.txt bin/ParkingLot.jar bin/Car.class bin/ParkingLot.class
 
 #Run test case
+echo "THIS IS TESTING"
+java -cp bin CarTest
+java -cp bin ParkingLotTest
 
+echo "Setup Complete"

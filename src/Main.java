@@ -1,18 +1,20 @@
 import java.io.*;
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 class Main {
     public static void main(String[] args) {
         boolean fromFile = false;
         Scanner in = new Scanner(System.in);
-        if (args.length != 0) {
+        if (args.length > 1) {
             try {
-                File inputFile = new File(args[0]);
+                File inputFile = new File(args[1]);
                 in = new Scanner(inputFile);
                 fromFile = true;
-            }
-            catch (FileNotFoundException e) {
+            } catch (FileNotFoundException e) {
                 System.out.println("File not found");
+                exit(0);
             }
         }
         ParkingLot park = null;
